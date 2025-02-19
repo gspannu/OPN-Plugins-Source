@@ -1,4 +1,4 @@
-PLUGIN_NAME=		speedtest
+PLUGIN_NAME=		speedtest-guru
 PLUGIN_VERSION=		0.9
 PLUGIN_REVISION=	5.0
 PLUGIN_COMMENT=		Speedtest Plugin for OPNsense 25.1

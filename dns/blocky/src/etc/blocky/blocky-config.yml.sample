@@ -1,0 +1,14 @@
+# Created Sample 2024-05-28
+upstream:
+  default:
+    - 1.1.1.1
+    - 8.8.8.8
+blocking:
+  denyists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  clientGroupsBlock:
+    default:
+      - ads
+port: 5353
+httpPort: 4000

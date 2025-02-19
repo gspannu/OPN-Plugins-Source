@@ -1,0 +1,110 @@
+#!/bin/sh
+
+# 2024-10-26
+
+# PROVIDE: nextdns
+# REQUIRE: DAEMON NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following to /etc/rc.conf[.local] to enable this service
+#
+# nextdns_enable (bool):	Set to NO by default.
+#			Set it to YES to enable nextdns.
+# NEXTDNS_CONFIG (str):	Set to /usr/local/etc/nextdns/nextdns.conf by default.
+#			Set it to a path to use that config file.
+# NEXTDNS_CONFIG_SAMPLE: Set to /usr/local/etc/nextdns/nextdns.conf.sample by default
+#			Set it to a path to use sample config file.
+# NEXTDNS_USER (str):	Services run as root by default. Set to a user name
+#			to run nextdns as that user. Note: non-root users
+#			might need permission to bind to ports.
+# NEXTDNS_GROUP (str):	Set to the user's primary group by default.
+#			Set it to a group name for daemon file ownership.
+# NEXTDNS_FLAGS (str):	Enter extra flags to append to the nextdns command.
+#!/bin/sh
+
+. /etc/rc.subr
+
+name=nextdns
+## DO NOT CHANGE THE ABOVE VARIABLE, to be always called name
+
+rcvar=nextdns_enable
+
+load_rc_config ${name}
+
+: ${nextdns_enable:=NO}
+: ${NEXTDNS_CONFIG:="/usr/local/etc/nextdns/nextdns.conf"}
+: ${NEXTDNS_GROUP:=}
+: ${NEXTDNS_FLAGS:="run"}
+: ${NEXTDNS_CONFIG_SAMPLE:="/usr/local/etc/nextdns/nextdns.conf.sample"}
+
+NEXTDNS_LOGFILE="/var/log/${name}/${name}.log"
+NEXTDNS_PIDFILE="/var/run/${name}.pid"
+NEXTDNS_PATH="/usr/local/bin/${name}"
+
+if [ -n "${NEXTDNS_USER}" ] && [ -z "${NEXTDNS_GROUP}" ]; then
+	# Detect the daemon user's primary group
+	NEXTDNS_GROUP=$(id -gn "${NEXTDNS_USER}")
+fi
+
+command="/usr/sbin/daemon"
+procname=${NEXTDNS_PATH}
+command_args="-c -f -o ${NEXTDNS_LOGFILE} -p ${NEXTDNS_PIDFILE} ${NEXTDNS_PATH} ${NEXTDNS_FLAGS} -config-file ${NEXTDNS_CONFIG} &"
+
+#/usr/sbin/daemon -c -f -o /var/log/nextdns/nextdns.log -p /var/run/nextdns.pid /root/temp/nextdns run -config-file /usr/local/etc/nextdns/nextdns.conf &
+
+start_precmd="nextdns_precmd"
+# Sets up a NEXTDNS_PIDFILE the daemon user can access
+nextdns_precmd()
+{
+	install -o "${NEXTDNS_USER:-root}" -g "${NEXTDNS_GROUP:-wheel}" -m 0600 /dev/null "${NEXTDNS_PIDFILE}"
+}
+
+
+status_cmd=nextdns_status
+nextdns_status()
+{
+	if [ -n "$rc_pid" ]; then
+		echo "${name} is running as pid $rc_pid (through OPNsense os-nextdns plugin)."
+		return 0
+	else
+		echo "${name} is not running."
+  fi
+}
+
+#stop_cmd="killall nextdns"
+stop_cmd=nextdns_stop
+#stop_cmd=nextdns_stop_asservice
+
+nextdns_stop()
+{
+	# wait for process to exit
+	if [ -n "$rc_pid" ]; then
+		echo "Stopping ${name} (through OPNsense os-nextdns plugin)."
+		kill $rc_pid
+		echo "Waiting for PIDS: $rc_pid  (through OPNsense os-nextdns plugin)."
+		wait_for_pids $rc_pid
+		echo " Stopped ${name} (through OPNsense os-nextdns plugin)."
+	else
+		echo "${name} is not running (through OPNsense os-nextdns plugin)."
+	fi
+}
+
+
+# Create nextdns-config from sample, else do not overwrite existing
+if [ -f "${NEXTDNS_CONFIG}" ]; then
+  # If nextdns config file exists, then do not overwrite; do nothing !
+ else
+  # If no nextdns config file found; assume a new install; copy sample as config file 
+  cp "${NEXTDNS_CONFIG_SAMPLE}" "${NEXTDNS_CONFIG}";
+fi
+
+# Create nextdns logfile directory and file
+if [ -f "${NEXTDNS_LOGFILE}" ]; then
+  # If nextdns log file exists, then do not overwrite; do nothing !
+ else
+  # If no nextdns log file found; assume a new install; create log directory 
+  mkdir -p /var/log/${name}/
+  touch "${NEXTDNS_LOGFILE}"
+fi
+
+run_rc_command "$1"

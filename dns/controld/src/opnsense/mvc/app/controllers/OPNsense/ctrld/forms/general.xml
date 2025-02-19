@@ -1,0 +1,14 @@
+<form>
+    <field>
+        <id>general.enabled</id>
+        <label>Enable</label>
+        <type>checkbox</type>
+        <help>Enable or disable the ControlD DNS resolver.</help>
+    </field>
+    <field>
+        <id>general.primarydns</id>
+        <label>Primary DNS</label>
+        <type>checkbox</type>
+        <help>Enable if ControlD is the primary DNS resolver (i.e. will run on port 53). Check file /usr/local/etc/ctrld/ctrld-config.toml </help>
+    </field>
+</form>

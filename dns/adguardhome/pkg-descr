@@ -1,0 +1,41 @@
+AdGuardHome DNS plugin for OPNsense
+Github: https://github.com/gspannu/OPN-Plugins
+
+Read more about AdGuardHome here: https://github.com/AdguardTeam/AdGuardHome
+Compiled by Guru Pannu, Copyright (c) 2025
+
+The AGH web browser should be available on http://OPNsenseIPAddress:3000/
+(e.g. http://192.168.1.1:3000) after a clean install
+
+Please ensure to disable Unbound/dnsmasq or run on another port than :53
+
+**********************************************
+
+#Version 1.5, Release 0.0
+* Updated for OPNsense 25.1 stable release
+* Contains AdGuardHome Beta v0.108.0-b.63
+* Please configure /usr/local/AdGuardHome/AdGuardhome.yaml as required
+* Clean install - AGH web browser available on http://OPNsenseIPAddress:3000/
+**********************************************
+
+#Version 1.4, Release 0.1
+* Updated for OPNsense 25.1 stable release
+* Updated release build 1.3, corrected file permissions
+* Contains AdGuardHome Beta v0.108.0-b.61
+* Please configure /usr/local/AdGuardHome/AdGuardhome.yaml as required
+* Clean install - AGH web browser available on http://OPNsenseIPAddress:3000/
+**********************************************
+
+#Version 1.3
+* Updated release build, works with 25.1 beta
+* Contains AdGuardHome Beta v0.108.0-b.61
+* Please configure /usr/local/AdGuardHome/AdGuardhome.yaml as required
+* Clean install - AGH web browser available on http://OPNsenseIPAddress:3000/
+**********************************************
+
+#Version 1.1
+* First release build
+* Contains AdGuardHome Beta v0.108.0-b.59
+* Please configure /usr/local/AdGuardHome/AdGuardhome.yaml as required
+* Clean install - AGH web browser available on http://OPNsenseIPAddress:3000/
+**********************************************

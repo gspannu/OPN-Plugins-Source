@@ -1,0 +1,9 @@
+<acl>
+   <page-services-controld>
+      <name>Services: ctrld</name>
+      <patterns>
+         <pattern>ui/ctrld/*</pattern>
+         <pattern>api/ctrld/*</pattern>
+      </patterns>
+   </page-services-controld>
+</acl>

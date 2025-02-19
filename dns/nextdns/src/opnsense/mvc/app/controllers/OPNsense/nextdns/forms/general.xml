@@ -1,0 +1,14 @@
+<form>
+    <field>
+        <id>general.enabled</id>
+        <label>Enable</label>
+        <type>checkbox</type>
+        <help>Enable or disable the NextDNS DNS resolver.</help>
+    </field>
+    <field>
+        <id>general.primarydns</id>
+        <label>Run as Primary DNS</label>
+        <type>checkbox</type>
+        <help>Enable if NextDNS is the primary DNS resolver (i.e. will run on port 53). Check file /usr/local/etc/nextdns/nextdns.conf. Ensure that no other application (Unbound, dnsmasq, AdGuardHome) is not running on port 53. </help>
+    </field>
+</form>

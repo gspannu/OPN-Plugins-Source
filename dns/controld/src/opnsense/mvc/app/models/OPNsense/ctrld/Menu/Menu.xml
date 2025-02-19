@@ -1,0 +1,7 @@
+<menu>
+  <Services>
+    <ControlD VisibleName="ControlD DNS" cssClass="fa fa-mixcloud">
+      <General url="/ui/ctrld/general/index" order="10"/>
+    </ControlD>
+  </Services>
+</menu>

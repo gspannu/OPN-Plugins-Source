@@ -1,0 +1,40 @@
+NextDNS DNS plugin for OPNsense
+Github: https://github.com/gspannu/OPN-Plugins
+
+Read more about NextDNS here: https://nextdns.io and https://github.com/nextdns/nextdns
+Compiled by Guru Pannu, Copyright (c) 2025
+
+**********************************************
+
+#Version 1.44.3, Revision 0.2
+* Build for new GitHub repo
+* Contains NextDNS CLI v1.44.3
+* Please configure /usr/local/etc/nextdns/nextdns.conf as required
+**********************************************
+
+#Version 1.44.3, Revision 0.1
+* Build for OPNsense 25.1 stable release
+* Contains NextDNS CLI v1.44.3
+* Please configure /usr/local/etc/nextdns/nextdns.conf as required
+**********************************************
+
+#Version 1.44.3, Revision 0
+* Second build
+* Contains NextDNS CLI v1.44.3
+* Please configure /usr/local/etc/nextdns/nextdns.conf as required
+**********************************************
+
+#Version 1.43.5, Revision 0
+* First build
+* Contains NextDNS CLI v1.43.5
+* Please configure /usr/local/etc/nextdns/nextdns.conf as required
+**********************************************
+
+
+-----------------------------------------------------------------------------
+# NextDNS CLI Client
+
+NextDNS CLI is a command-line tool that allows you to use [NextDNS](https://nextdns.io) DNS-over-HTTPS (DoH) service with advanced capabilities.
+Although the most advanced features will only work with NextDNS, this program can work as a client for any DoH provider or a mix of NextDNS + another DNS (split horizon).
+
+See the [wiki](https://github.com/nextdns/nextdns/wiki) for installation and usage instructions.

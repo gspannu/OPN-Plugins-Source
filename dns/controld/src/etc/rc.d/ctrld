@@ -1,0 +1,110 @@
+#!/bin/sh
+
+# 2024-10-24
+
+# PROVIDE: ctrld
+# REQUIRE: DAEMON NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following to /etc/rc.conf[.local] to enable this service
+#
+# ctrld_enable (bool):	Set to NO by default.
+#			Set it to YES to enable ctrld.
+# CONTROLD_CONFIG (str):	Set to /usr/local/etc/ctrld-config.toml by default.
+#			Set it to a path to use that config file.
+# CONTROLD_CONFIG_SAMPLE: Set to /usr/local/etc/ctrld-config.toml.sample by default
+#			Set it to a path to use sample config file.
+# CONTROLD_USER (str):	Services run as root by default. Set to a user name
+#			to run ctrld as that user. Note: non-root users
+#			might need permission to bind to ports.
+# CONTROLD_GROUP (str):	Set to the user's primary group by default.
+#			Set it to a group name for daemon file ownership.
+# CONTROLD_FLAGS (str):	Enter extra flags to append to the ctrld command.
+#!/bin/sh
+
+. /etc/rc.subr
+
+name=ctrld
+## DO NOT CHANGE THE ABOVE VARIABLE, to be always called name
+
+rcvar=ctrld_enable
+
+load_rc_config ${name}
+
+: ${ctrld_enable:=NO}
+: ${CONTROLD_CONFIG:="/usr/local/etc/ctrld/ctrld-config.toml"}
+: ${CONTROLD_GROUP:=}
+: ${CONTROLD_FLAGS:="run"}
+: ${CONTROLD_CONFIG_SAMPLE:="/usr/local/etc/ctrld/ctrld-config.toml.sample"}
+
+CONTROLD_LOGFILE="/var/log/${name}/plugin.log"
+CONTROLD_PIDFILE="/var/run/${name}.pid"
+CONTROLD_PATH="/usr/local/bin/${name}"
+
+if [ -n "${CONTROLD_USER}" ] && [ -z "${CONTROLD_GROUP}" ]; then
+	# Detect the daemon user's primary group
+	CONTROLD_GROUP=$(id -gn "${CONTROLD_USER}")
+fi
+
+command="/usr/sbin/daemon"
+procname=${CONTROLD_PATH}
+command_args="-c -f -o ${CONTROLD_LOGFILE} -p ${CONTROLD_PIDFILE} ${CONTROLD_PATH} ${CONTROLD_FLAGS} -c ${CONTROLD_CONFIG} &"
+
+#/usr/sbin/daemon -c -f -o /root/temp/log.txt -p /var/run/ctrld.pid /root/temp/ctrld run -c /root/temp/controld.toml &
+
+start_precmd="ctrld_precmd"
+# Sets up a CONTROLD_PIDFILE the daemon user can access
+ctrld_precmd()
+{
+	install -o "${CONTROLD_USER:-root}" -g "${CONTROLD_GROUP:-wheel}" -m 0600 /dev/null "${CONTROLD_PIDFILE}"
+}
+
+
+status_cmd=ctrld_status
+ctrld_status()
+{
+	if [ -n "$rc_pid" ]; then
+		echo "${name} is running as pid $rc_pid (through OPNsense os-ctrld plugin)."
+		return 0
+	else
+		echo "${name} is not running."
+  fi
+}
+
+#stop_cmd="killall ctrld"
+stop_cmd=ctrld_stop
+#stop_cmd=ctrld_stop_asservice
+
+ctrld_stop()
+{
+	# wait for process to exit
+	if [ -n "$rc_pid" ]; then
+		echo "Stopping ${name} (through OPNsense os-ctrld plugin)."
+		kill $rc_pid
+		echo "Waiting for PIDS: $rc_pid  (through OPNsense os-ctrld plugin)."
+		wait_for_pids $rc_pid
+		echo " Stopped ${name} (through OPNsense os-ctrld plugin)."
+	else
+		echo "${name} is not running (through OPNsense os-ctrld plugin)."
+	fi
+}
+
+
+# Create ctrld-config from sample, else do not overwrite existing
+if [ -f "${CONTROLD_CONFIG}" ]; then
+  # If ctrld config file exists, then do not overwrite; do nothing !
+ else
+  # If no ctrld config file found; assume a new install; copy sample as config file 
+  cp "${CONTROLD_CONFIG_SAMPLE}" "${CONTROLD_CONFIG}";
+fi
+
+# Create ctrld logfile directory and file
+if [ -f "${CONTROLD_LOGFILE}" ]; then
+  # If ctrld log file exists, then do not overwrite; do nothing !
+ else
+  # If no ctrld log file found; assume a new install; create log directory 
+  mkdir -p /var/log/${name}/
+  touch "${CONTROLD_LOGFILE}"
+fi
+
+run_rc_command "$1"

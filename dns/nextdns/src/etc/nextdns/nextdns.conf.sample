@@ -1,0 +1,46 @@
+# Listen Port configuration
+listen :53
+#listen 192.168.1.1:53
+#listen 127.0.0.1:53
+#listen 192.168.10.200:56465
+
+# Change profiles as needed for various client configurations
+#profile 192.168.10.0/24=abc123
+#profile 192.168.60.0/24=def456
+#profile 192.168.1.200/32=ghj397
+#profile abcdef
+
+# Default NexDNS profile id
+profile 123abc
+
+# Forwarding rules if any
+#Do not need any *.lan, *.home rules if discovery-dns is set to use dnsmasq/unbound
+#forwarder *.home=127.0.0.1:53535
+
+# Cache Configuration
+cache-size 4MB
+#cache-max-age 3600s
+#max-ttl 30s
+#timeout 5s
+
+# Setup Configurations
+setup-router false
+auto-activate false
+detect-captive-portals false
+timeout 5s
+
+# Client information config
+bogus-priv true
+use-hosts true
+report-client-info true
+discovery-dns
+#discovery-dns <Leave blank for auto dhcp or use address:port for Unbound/dmsmasq>
+#discovery-dns 127.0.0.1:53535
+mdns all
+
+hardened-privacy false
+max-inflight-requests 256
+
+# Logging configuraion
+log-queries false
+debug false

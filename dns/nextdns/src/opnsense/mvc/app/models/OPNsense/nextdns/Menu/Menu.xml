@@ -1,0 +1,7 @@
+<menu>
+  <Services>
+    <NextDNS VisibleName="NextDNS DNS" cssClass="fa fa-eye-slash">
+      <General url="/ui/nextdns/general/index" order="10"/>
+		</NextDNS>
+  </Services>
+</menu>

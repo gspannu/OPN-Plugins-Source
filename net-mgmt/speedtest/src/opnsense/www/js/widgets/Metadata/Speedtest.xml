@@ -1,0 +1,30 @@
+<metadata>
+    <Speedtest>
+        <filename>Speedtest.js</filename>
+        <endpoints>
+            <endpoint>/api/speedtest/service/showstat</endpoint>
+            <endpoint>/api/speedtest/service/showlog</endpoint>
+            <endpoint>/api/speedtest/service/run</endpoint>
+        </endpoints>
+        <translations>
+            <title>Speedtest</title>
+            <download>Download</download>
+            <upload>Upload</upload>
+            <latency>Latency</latency>
+            <runSpeedtest>Run Speedtest</runSpeedtest>
+            <lastTest>Updated</lastTest>
+            <noData>N/A</noData>
+            <metrics>Metrics</metrics>
+            <avg>Avg</avg>
+            <min>Min</min>
+            <max>Max</max>
+            <unknownError>Unknown error</unknownError>
+            <serverNotFound>Server not found</serverNotFound>
+            <invalidServer>Invalid server</invalidServer>
+            <packageNotInstalled>Package not installed</packageNotInstalled>
+            <retrievingServers>Retrieving Speedtest servers</retrievingServers>
+            <unableToRetrieveServers>Unable to retrieve Speedtest servers</unableToRetrieveServers>
+            <noServersAvailable>No Speedtest servers available</noServersAvailable>
+        </translations>
+    </Speedtest>
+</metadata>

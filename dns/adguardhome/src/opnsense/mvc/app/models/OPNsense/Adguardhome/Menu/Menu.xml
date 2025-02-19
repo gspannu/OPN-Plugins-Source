@@ -1,0 +1,7 @@
+<menu>
+  <Services>
+    <Adguardhome VisibleName="AdGuardHome DNS" cssClass="fa fa-eye-slash">
+      <General url="/ui/adguardhome/general/index" order="10"/>
+    </Adguardhome>
+  </Services>
+</menu>

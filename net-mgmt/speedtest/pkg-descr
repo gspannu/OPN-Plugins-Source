@@ -1,0 +1,20 @@
+Speedtest plugin for OPNsense
+Plugin allows speedtests to be executed periodically
+through CRON, stores history of past tests, shows
+statistics (max, avg. min) for download, upload and
+latency results, includes dashboard widget.
+
+Github: https://github.com/gspannu/OPN-Plugins
+
+Heavily copied from mimugmail repo https://github.com/mimugmail/opn-repo
+
+Read more about speedtest here: https://www.speedtest.net
+Compiled by Guru Pannu, Copyright (c) 2025
+
+**********************************************
+Version 0.9, Revision 5.0
+* Core code copied from mimugmail
+* First build, includes custom dashboard widget
+
+
+**********************************************

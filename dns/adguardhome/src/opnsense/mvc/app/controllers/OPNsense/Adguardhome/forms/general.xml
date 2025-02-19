@@ -1,0 +1,17 @@
+<form>
+    <field>
+        <id>general.enabled</id>
+        <label>Enable</label>
+        <type>checkbox</type>
+        <help>Enable or disable AdGuardHome DNS</help>
+    </field>
+    <field>
+        <id>general.primarydns</id>
+        <label>Primary DNS</label>
+        <type>checkbox</type>
+        <help>Enable if AGH is the primary DNS resolver (i.e. will run on port 53).
+        Check file AdGuardHome.yaml in /usr/local/Adguardhome/ directory.
+        Ensure that no other resolver (Unbound, dnsmasq, etc.) is running on port 53.
+        </help>
+    </field>
+</form>

@@ -1,0 +1,5 @@
+{% if helpers.exists('OPNsense.ctrld.general.enabled') and OPNsense.ctrld.general.enabled == '1' %}
+ctrld_enable="YES"
+{% else %}
+ctrld_enable="NO"
+{% endif %}

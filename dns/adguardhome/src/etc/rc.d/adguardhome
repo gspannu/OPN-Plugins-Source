@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# $FreeBSD$
+#
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+name="adguardhome"
+
+rcvar=adguardhome_enable
+pidfile=/var/run/${name}.pid
+command=/usr/sbin/daemon
+command_args="-f -P /var/run/adguardhome.pid /usr/local/AdGuardHome/AdGuardHome -s run &"
+
+stop_cmd=adguardhome_stop
+status_cmd=adguardhome_status
+
+load_rc_config adguardhome
+
+: ${adguardhome_enable="NO"}
+
+
+adguardhome_status()
+{
+         if [ -n "$rc_pid" ]; then
+             echo "${name} is running as pid $rc_pid (through OPNsense os-adguardhome plugin)."
+             return 0
+         else
+             echo "${name} is not running (through OPNsense os-adguardhome plugin)."
+         fi
+}
+
+adguardhome_stop()
+{
+	# wait for process to exit
+	if [ -n "$rc_pid" ]; then
+		echo "Stopping ${name} (through OPNsense os-adguardhome plugin)."
+		kill $rc_pid
+		echo "Waiting for PIDS: $rc_pid (through OPNsense os-adguardhome plugin)."
+		wait_for_pids $rc_pid
+		echo " Done (through OPNsense os-adguardhome plugin).."
+	else
+		echo "${name} is not running (through OPNsense os-adguardhome plugin)."
+	fi
+}
+
+run_rc_command $1

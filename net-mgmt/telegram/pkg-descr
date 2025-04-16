@@ -1,0 +1,17 @@
+Monit Telegram Alerts plugin for OPNsense
+Github: https://github.com/gspannu/OPN-Plugins
+
+!!! ****** !!! ***** !!!
+All credit for the plugin goes to kulikov.a@gmail.com (the original author)
+
+Read more here: https://forum.opnsense.org/index.php?topic=36805.0
+Original code by kulikov availbale here: https://github.com/kulikov-a/opn-monit2t
+
+This plugin package code has been compiled (for some internal testing) into a different package with minor modifications.
+This is for my personal use only.
+Compiled by Guru Pannu, 2025
+
+**********************************************
+Version 1.0, Revision 0
+* A simple plugin that sends Monit alerts to a Telegram bot
+* Original code by kulikov.a@gmail.com

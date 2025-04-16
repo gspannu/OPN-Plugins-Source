@@ -1,0 +1,34 @@
+<form>
+   <field>
+      <id>monit2t.general.enabled</id>
+      <label>Enable</label>
+      <type>checkbox</type>
+      <help><![CDATA[Enable or disable this plugin.]]></help>
+   </field>
+   <field>
+      <id>monit2t.general.token</id>
+      <label>Telegram token</label>
+      <type>text</type>
+      <help><![CDATA[Telegram token. See <a href="https://core.telegram.org/bots#how-do-i-create-a-bot" target="_blank">Telegram documentation</a>]]></help>
+   </field>
+   <field>
+      <id>monit2t.general.chat_id</id>
+      <label>Telegram Chat ID</label>
+      <type>text</type>
+      <help><![CDATA[Telegram Chat ID.]]></help>
+   </field>
+   <field>
+      <id>monit2t.general.message_thread_id</id>
+      <label>Topic Thread ID</label>
+      <type>text</type>
+      <advanced>true</advanced>
+      <help><![CDATA[Topic ID/Message_thread_ID to send to (if needed)]]></help>
+   </field>
+   <field>
+      <id>monit2t.general.message</id>
+      <label>Message</label>
+      <type>textbox</type>
+      <advanced>true</advanced>
+      <help><![CDATA[Custom message format (if needed). Use braces for Monit env vars. Like {MONIT_HOST}]]></help>
+   </field>
+</form>

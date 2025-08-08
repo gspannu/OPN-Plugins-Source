@@ -2,7 +2,13 @@ ControlD DNS plugin for OPNsense
 Github: https://github.com/gspannu/OPN-Plugins
 
 Read more about ControlD here: https://controld.com and https://github.com/Control-D-Inc/ctrld
-Compiled by Guru Pannu, Copyright (c) 2024
+Compiled by Guru Pannu, Copyright (c) 2025
+
+**********************************************
+
+#Version 1.4, Revision 5
+* Recompiled for new Github repo
+* Contains CtrlD 1.4.5
 
 **********************************************
 

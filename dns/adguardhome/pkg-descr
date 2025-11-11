@@ -11,7 +11,7 @@ Please ensure to disable Unbound/dnsmasq or run on port other than :53
 
 **********************************************
 
-#Version 1.5, Release 0.2
+#Version 1.5, Release 0.3
 * Updated for OPNsense 25.7 stable release
 * Contains AdGuardHome Beta v0.108.0-b.78
 * Please configure /usr/local/AdGuardHome/AdGuardhome.yaml as required

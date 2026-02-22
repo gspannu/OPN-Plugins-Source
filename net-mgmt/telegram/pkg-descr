@@ -9,7 +9,12 @@ Original code by kulikov availbale here: https://github.com/kulikov-a/opn-monit2
 
 This plugin package code has been compiled (for some internal testing) into a different package with minor modifications.
 This is for my personal use only.
-Compiled by Guru Pannu, 2025
+Compiled by Guru Pannu, 2026
+
+**********************************************
+Version 26.1, Revision 0.1
+* A simple plugin that sends Monit alerts to a Telegram bot
+* Original code by kulikov.a@gmail.com
 
 **********************************************
 Version 1.0, Revision 0

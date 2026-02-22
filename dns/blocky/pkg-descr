@@ -2,7 +2,18 @@ Blocky DNS plugin for OPNsense
 Github: https://github.com/gspannu/OPN-Plugins
 
 Read more about blocky here: https://github.com/0xERR0R/blocky
-Compiled by Guru Pannu, Copyright (c) 2025
+Compiled by Guru Pannu, Copyright (c) 2026
+
+**********************************************
+Version 26.1, Revision 0.1
+* Contains Blocky v0.28.2 binary
+* Recompiled for Blocky v0.28.2  (18 November 2025 release)
+
+**********************************************
+Version 0.28, Revision 2.0
+* Contains Blocky v0.28.2 binary
+* Recompiled for Blocky v0.27.0  (17 November release)
+
 **********************************************
 Version 0.28, Revision 1
 * Contains Blocky v0.28.1 binary

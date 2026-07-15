@@ -12,6 +12,12 @@ This is for my personal use only.
 Compiled by Guru Pannu, 2026
 
 **********************************************
+Version 26.1, Revision 0.3
+* A simple plugin that sends Monit alerts to a Telegram bot
+* Original code by kulikov.a@gmail.com
+* No chnage to 0.1, just recompiled for 0.3
+
+**********************************************
 Version 26.1, Revision 0.1
 * A simple plugin that sends Monit alerts to a Telegram bot
 * Original code by kulikov.a@gmail.com

@@ -5,6 +5,11 @@ Read more about NextDNS here: https://nextdns.io and https://github.com/nextdns/
 Compiled by Guru Pannu, Copyright (c) 2026
 
 **********************************************
+#Version 26.1, Revision 0.3
+* Contains NextDNS CLI v1.47.3
+* Please configure /usr/local/etc/nextdns/nextdns.conf as required
+
+**********************************************
 #Version 26.1, Revision 0.1
 * Build for new GitHub repo
 * Contains NextDNS CLI v1.47.1
